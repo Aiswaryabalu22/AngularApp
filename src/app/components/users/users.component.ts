@@ -12,6 +12,7 @@ export class UsersComponent implements OnInit {
   loaded: number;
   enableAdd: boolean;
   showForm: boolean = false;
+  //@ViewChild('userForm') form: any;
 
   /* nameTemp: string;
   ageTemp: number;
@@ -163,5 +164,28 @@ export class UsersComponent implements OnInit {
     u.hide = !u.hide;
     console.log(u.hide);
   }
+
+/*   OnSubmit({value, valid} : {value: User, valid: boolean}): void{
+    if(!valid){
+      console.log("Form not valid")
+    }
+    else{
+      alert("Submit button clicked")
+      value.isActive= true;
+      value.registered= new Date('24/04/1999 07:45:45');
+      value.balance = 7690000;
+      value.hide = true;
+      this.users.unshift(value);
+
+      this.form.reset();
+    } */
+
+    OnSubmit(): void{
+        this.users.unshift(this.u)
+      }
+
+  
+
+  
 
 }
