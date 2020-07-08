@@ -23,11 +23,18 @@
         </div>
         <button type="submit" (ngSubmit)="NewUserSubmitButtonHandler($event)" class="btn btn-primary">Submit</button>
     </form> -->
-    <form (Submit)="addUser()" class="container card card-body p-3">
+    <form userForm="ngForm" (ngSubmit)="addUser(userForm)" class="container card card-body p-3">
         <div class="form-group">
             <label>Name</label>
-            <input required minlength="2" type="text" name="name" class="form-control" placeholder="Enter Name"
-                [(ngModel)]="u.name">            
+            <input 
+            required 
+            minlength="2" 
+            type="text" name="name" class="form-control" placeholder="Enter Name"
+            [(ngModel)]="u.name" 
+            #userName="ngModel"
+            [ngClass]="{'is-invalid': userName.errors && userName.touched}">
+            <div class="invalid-feedback" [hidden]="userName.errors?.required"> Name is a required field </div>
+            <div class="invalid-feedback" [hidden]="userName.errors?.minlength"> Must be atleast 2 characters </div>
         </div>
         <div class="form-group">
             <label>Age</label>
@@ -50,11 +57,20 @@
         </div>
         <div class="form-group">
             <label>Email</label>
-            <input type="email" class="form-control" placeholder="Enter email ID" name="email"
-                [(ngModel)]="u.email">
-            <p> Email is a required field</p>
+            <input type="email" 
+                   class="form-control" 
+                   placeholder="Enter email ID" 
+                   name="email" 
+                   [(ngModel)]="u.email"
+                   #userEmail="ngModel"
+                   required 
+                   [ngClass]="{'is-invalid': userEmail.errors && userEmail.touched}"
+                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+            <p class="invalid-feedback" *ngIf="userEmail.errors?.required"> Email is a required field</p>
+            <p class="invalid-feedback" *ngIf="userEmail.errors?.pattern"> Email is ot valid</p>
         </div>
         <div class="form-group">
+            <label> Image </label>
             <input type="text" class="form-control" placeholder="Enter Profile Picture URL" name="image"
                 [(ngModel)]="u.image">
         </div>
@@ -81,7 +97,7 @@
                         <li class="list-group-item"> Address: {{user.address.DoorNum}} {{user.address.FlatNum}}
                             {{user.address.Street | lowercase}}</li>
                         <li class="list-group-item"> CTC: {{user.balance | currency:"INR"}} </li>
-                        <li class="list-group-item"> Email: {{ user.email }} </li> 
+                        <li class="list-group-item"> Email: {{ user.email }} </li>
                     </ul>
                     <h1 *ngIf="user.hide" class="col-lg-8 col-md-6 col-sm-12" style="padding-top: 125px;"> {{user.name}}
                         <button class="btn btn-dark btn-sm" (click)="HideButtonOnClickHandler(user)"><i
