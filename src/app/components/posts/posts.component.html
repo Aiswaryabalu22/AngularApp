@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-body">
         <h1 class="card-title"> FORM TO ADD POST </h1>
-        <app-post-form (newPost)="OnNewPost($event)"> </app-post-form>
+        <app-post-form (newPost)="OnNewPost($event)" [currentPost]="currentPost"> </app-post-form>
     </div>
 </div>
 
@@ -11,6 +11,10 @@
         <div class="card-body">
             <h1 class="card-title"> {{eachPost.title}} </h1>
             <p class="card-text"> {{eachPost.body}} </p>
+            <div>
+                <button class="btn btn-primary" (click)="editPost(eachPost)"> Edit </button>&nbsp;
+                <button class="btn btn-danger"> Delete </button>
+            </div>
         </div>
     </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { PostService } from '../../services/post.service'
 import { UrlHandlingStrategy } from '@angular/router';
 import { Post } from '../../models/Post'
@@ -11,9 +11,9 @@ import { Post } from '../../models/Post'
 
 export class PostFormComponent implements OnInit {
 
-  post: Post;
+  
   @Output() newPost: EventEmitter<Post> = new EventEmitter();
-
+  @Input() currentPost: Post;
 
   constructor(private postservice: PostService) { }
 
@@ -21,6 +21,7 @@ export class PostFormComponent implements OnInit {
   }
 
   addPost(title:string, body:string) :void{
+    console.log(title, body)
     if(!title || !body){
       alert('Please add both title and post to proceed adding..');
     }

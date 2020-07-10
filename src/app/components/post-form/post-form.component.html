@@ -3,11 +3,14 @@
     <form method="POST">
         <div class="form-group">
           <label>Post Title</label>
-          <input type="text" class="form-control" placeholder="Enter Post title" #title>
+          <input type="text" class="form-control" placeholder="Enter Post title" name="title" #title [(ngModel)]="currentPost.title">
         </div>
         <div class="form-group">
           <label>Post Content</label>
-          <input type="text" class="form-control" placeholder="Enter Post Content" #body>
+          <input type="text" class="form-control" placeholder="Enter Post Content" name="body" #body [(ngModel)]="currentPost.body">
+        </div>
+        <div>
+          <input type="hidden" #id [(ngModel)]="currentPost.id" name="id">
         </div>
         <button type="submit" class="btn btn-primary btn-block" (click)="addPost(title.value, body.value)">Submit</button>
     </form>
