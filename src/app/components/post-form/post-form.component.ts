@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { PostService } from '../../services/post.service'
 import { UrlHandlingStrategy } from '@angular/router';
 import { Post } from '../../models/Post'
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-post-form',
@@ -33,6 +34,12 @@ export class PostFormComponent implements OnInit {
         this.newPost.emit(resultOfPostAdded);
       });
     }
+  }
+
+  updatePost(){
+    this.postservice.updatePost(this.currentPost).subscribe( (post) => {
+      console.log(post);
+    })
   }
 
 }

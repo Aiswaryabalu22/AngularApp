@@ -28,4 +28,11 @@ export class PostService {
      return this.http.post<Post>(this.postsUrl, p, httpOptions);
   }
 
+  updatePost(postToBeUpdated: Post): Observable<Post>{
+    //You can only update a particular post. So, https://jsonplaceholder.typicode.com/posts/id
+    const url = this.postsUrl + '/' + postToBeUpdated.id;
+    console.log(url)
+    return this.http.put<Post>(url, postToBeUpdated, httpOptions); 
+  }
+
 }

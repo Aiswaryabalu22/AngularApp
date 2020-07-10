@@ -13,6 +13,6 @@
           <input type="hidden" #id [(ngModel)]="currentPost.id" name="id">
         </div>
         <button *ngIf="!isEdit" type="submit" class="btn btn-primary btn-block" (click)="addPost(title.value, body.value)">Add Post</button>
-        <button *ngIf="isEdit" type="submit" class="btn btn-primary btn-block">Update Post</button>
+        <button *ngIf="isEdit" type="submit" class="btn btn-primary btn-block" (click)="updatePost(currentPost)">Update Post</button>
     </form>
 </div>
