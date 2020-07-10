@@ -35,4 +35,10 @@ export class PostService {
     return this.http.put<Post>(url, postToBeUpdated, httpOptions); 
   }
 
+  deletePost(postIdToBeDeleted: number): Observable<Post>{
+    const url = this.postsUrl + '/' + postIdToBeDeleted;
+    console.log(url)
+    return this.http.delete<Post>(url, httpOptions);
+  }
+
 }
