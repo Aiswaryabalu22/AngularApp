@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { PostService } from '../../services/post.service'
 import { UrlHandlingStrategy } from '@angular/router';
 import { Post } from '../../models/Post'
@@ -8,7 +8,12 @@ import { Post } from '../../models/Post'
   templateUrl: './post-form.component.html',
   styleUrls: ['./post-form.component.css']
 })
+
 export class PostFormComponent implements OnInit {
+
+  post: Post;
+  @Output() newPost: EventEmitter<Post> = new EventEmitter();
+
 
   constructor(private postservice: PostService) { }
 
@@ -22,7 +27,8 @@ export class PostFormComponent implements OnInit {
     else{
       //POST METHOD
       this.postservice.addPosts({title,body} as Post).subscribe( (resultOfPostAdded) => {
-        console.log('Added post: ' + resultOfPostAdded.title)
+        console.log(resultOfPostAdded);
+        this.newPost.emit(resultOfPostAdded);
       });
     }
   }
