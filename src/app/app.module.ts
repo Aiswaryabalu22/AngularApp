@@ -6,19 +6,31 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UsersComponent } from './components/users/users.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { PostsComponent } from './components/posts/posts.component';
+
+import { DataService } from './services/data.service'
+import { PostService } from './services/post.service'
+import { HttpClientModule, HttpClient } from '@angular/common/http'
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
-    NavbarComponent
+    NavbarComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    DataService,
+    PostService,
+    HttpClientModule,
+    HttpClient
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
