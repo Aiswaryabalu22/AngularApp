@@ -9,6 +9,7 @@ import { PostService } from '../../services/post.service'
 })
 export class PostsComponent implements OnInit {
 
+  isEdit: boolean = false;
   posts: Post[];
   currentPost: Post = {
     userid: null,
@@ -33,6 +34,7 @@ export class PostsComponent implements OnInit {
 
   editPost(post: Post){
     this.currentPost = post;
+    this.isEdit = true;
 
   }
 
