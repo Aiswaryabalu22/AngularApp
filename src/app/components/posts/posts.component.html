@@ -1,1 +1,16 @@
-<p>posts works!</p>
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title"> FORM TO ADD POST </h1>
+        <app-post-form> </app-post-form>
+    </div>
+</div>
+
+
+<div *ngFor="let eachPost of posts" class="m-5">
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title"> {{eachPost.title}} </h1>
+            <p class="card-text"> {{eachPost.body}} </p>
+        </div>
+    </div>
+</div>

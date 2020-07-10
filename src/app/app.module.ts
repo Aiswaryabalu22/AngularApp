@@ -10,14 +10,16 @@ import { PostsComponent } from './components/posts/posts.component';
 
 import { DataService } from './services/data.service'
 import { PostService } from './services/post.service'
-import { HttpClientModule, HttpClient } from '@angular/common/http'
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { PostFormComponent } from './components/post-form/post-form.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
     NavbarComponent,
-    PostsComponent
+    PostsComponent,
+    PostFormComponent
   ],
   imports: [
     BrowserModule,
