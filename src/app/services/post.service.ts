@@ -41,4 +41,10 @@ export class PostService {
     return this.http.delete<Post>(url, httpOptions);
   }
 
+  getSpecificPost(id: number):Observable<Post>{
+    const url = 'https://jsonplaceholder.typicode.com/posts/' + id;
+    console.log(url);
+    return this.http.get<Post>(url);
+  }
+
 }

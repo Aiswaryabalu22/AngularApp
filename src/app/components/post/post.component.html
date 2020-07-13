@@ -1,0 +1,10 @@
+<div class="card">
+    <div class="card-body" *ngIf="post.title">
+        <h1 class="card-title"> {{post.title}} </h1>
+        <p class="card-text"> {{post.body}} </p>
+    </div>
+    <div class="card-body" *ngIf="!post.title">
+        <a href="" [routerLink]="['/notfound']"></a>
+    </div>
+
+</div>
